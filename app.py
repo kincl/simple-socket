@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
+import sys
 import socket
-
 
 TCP_IP = ''
 TCP_PORT = 5005
@@ -15,12 +15,12 @@ while True:
     # wait for connection
     conn, addr = s.accept()
     try:
-        print 'Connection address:', addr
+        sys.stderr.print('Connection address:', addr, '\n')
         while 1:
             data = conn.recv(BUFFER_SIZE)
             if not data: break
-            print "received data:", data
+            sys.stderr.print('got data:', data, '\n')
             conn.send(data)  # echo
     finally:
-        print 'Closing connection'
+        sys.stderr.print('Closing connection\n')
         conn.close()
