@@ -22,4 +22,5 @@ while True:
             print "received data:", data
             conn.send(data)  # echo
     finally:
+        print 'Closing connection'
         conn.close()
