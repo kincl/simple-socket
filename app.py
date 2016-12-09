@@ -15,8 +15,9 @@ while True:
     # wait for connection
     conn, addr = s.accept()
     try:
+        conn.send('Hello, I see your IP as: ' + str(addr[0]) + '\n')
         sys.stderr.write('Connection address: ' + str(addr) + '\n')
-        while 1:
+        while True:
             data = conn.recv(BUFFER_SIZE)
             if not data: break
             sys.stderr.write('got data: ' + str(data) + '\n')
